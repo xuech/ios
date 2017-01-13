@@ -1,0 +1,25 @@
+<ion-view view-title="Select {{ model.label }}">
+  <ion-nav-bar class="bar-positive app-titlebar">
+    <ion-nav-back-button class="button-clear button-icon button-clear">Cancel</ion-nav-back-button>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-label" ng-click="handleSubmit()">Confirm</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <ion-list>
+      <selection-toggle ng-repeat="item in model.value" item="item" ng-if="item.name"></selection-toggle>
+      <ion-item ng-hide="model.value.length">No options found</ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer-bar align-title="left" class="bar-stable" ng-show="hasMultipleItems">
+    <h1 class="title">&nbsp;</h1>
+
+    <div class="buttons" ng-click="handleToggleSelected()">
+      <button class="button" ng-show="canSelectAll">Select All</button>
+      <button class="button" ng-hide="canSelectAll">Unselect All</button>
+    </div>
+  </ion-footer-bar>
+
+</ion-view>

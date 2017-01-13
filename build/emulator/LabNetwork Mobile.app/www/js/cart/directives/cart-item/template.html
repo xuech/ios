@@ -1,0 +1,56 @@
+<div class="component-cart-item">
+  <div class="item-divider">
+    <span class="item-title">
+      {{item.productDescription}}
+    </span>
+
+    <span class="item-price">
+      <span class="value" ng-show="item.isLoading"><ion-spinner icon="dots"></ion-spinner></span>
+      <span class="value" ng-hide="item.isLoading">
+        <span ng-show="item.isPriceUponRequest">N/A</span>
+        <span ng-hide="item.isPriceUponRequest">{{ item.originalPrice | currency : item.currencyCode }}</span>
+      </span>
+    </span>
+  </div>
+
+  <div class="cart-item item-text-wrap">
+    <div class="properties">
+      <table>
+        <tr>
+          <td>Supplier:</td>
+          <td>{{ item.supplierName }}</td>
+        </tr>
+        <tr>
+          <td>Lead Time:</td>
+          <td>
+            <span ng-if="!item.usuallyShipsWithinDays">Inquire</span>
+            <ng-pluralize ng-if="item.usuallyShipsWithinDays"
+                          count="item.usuallyShipsWithinDays"
+                          when="{'1': '1 Business Day',
+                                 'other': '{} Business Days'}"></ng-pluralize>
+          </td>
+        </tr>
+      </table>
+
+      <p class="text-item-quantity" ng-class="{disabled: item.isInactiveProduct}">
+        Qty: {{ item.quantity }}
+        <i ng-click="handleQuantityDecrement()" class="icon ion-ios-minus-outline"></i>
+        <i ng-click="handleQuantityIncrement()" class="icon ion-ios-plus-outline"></i>
+      </p>
+    </div>
+
+    <div class="image">
+      <chemical-image id=item.chemicalId chemical=item></chemical-image>
+    </div>
+  </div>
+
+  <div class="ui-price-request" ng-if="item.isPriceUponRequest">
+    <strong>Price Upon Request <span class="packaging-unit">({{ item.packagingInfo }})</span></strong>
+    Please click on Request Quote to obtain pricing. If you wish to checkout with other products, please move this item to your Sae for Later list.
+  </div>
+
+  <div class="ui-inactive-product" ng-if="item.isInactiveProduct">
+    <strong>Product is currently not available for sale</strong>
+    Please remove it or save for later before check out.
+  </div>
+</div>

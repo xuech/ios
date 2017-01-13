@@ -1,0 +1,33 @@
+<div class="card component-order-card">
+  <div class="item item-divider" ng-click="handleToggleIsCollapsed()">
+    Order #: {{ order.jdeOrderNumber }}
+  </div>
+
+  <div class="item item-text-wrap item-icon-right">
+    <div class="properties">
+      <table>
+        <tr>
+          <td>Date:</td>
+          <td>{{ order.orderDate | date:'MM/dd/yyyy' }}</td>
+        </tr>
+        <tr>
+          <td>Total:</td>
+          <td>{{ order.orderTotal | currency:order.currencyCode }}</td>
+        </tr>
+        <tr>
+          <td>Status:</td>
+          <td>{{ order.fulfillmentStatus }}</td>
+        </tr>
+      </table>
+
+      <table ng-if="permissions.isSiteAdmin || permissions.isCSR">
+        <tr>
+          <td>Buyer Company:</td>
+          <td>{{ order.placedBy.company }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <i class="icon icon-right-open-mini"></i>
+  </div>
+</div>

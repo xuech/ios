@@ -1,0 +1,26 @@
+<ion-view view-title="Select {{ model.type }} Address" class="state-address-select">
+
+  <ion-nav-bar class="bar-positive app-titlebar">
+    <ion-nav-back-button class="button-clear button-icon button-clear">Cancel</ion-nav-back-button>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-label" ng-click="handleSubmit()">Confirm</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-loading" ng-class="{ 'is-active': isLoading }">
+        <span><ion-spinner icon="dots"></ion-spinner></span>
+      </ion-item>
+      <ion-radio ng-repeat="item in model.addresses"
+                 ng-model="model.selectedId"
+                 ng-value="item.id">
+        {{ item.street1 }}<br>
+        <span ng-show="item.street2">{{ item.street2 }}<br></span>
+        {{ item.city }}, {{ item.state }} {{ item.postalCode }}<br>
+        {{ item.country.name }}
+      </ion-radio>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

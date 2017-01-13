@@ -1,0 +1,47 @@
+<ion-view view-title="Results">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ui-sref="app.home">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear" ui-sref="app.cart.items" history-save-page><i class="icon-cart"></i></button>
+    <cart-badge ui-sref="app.cart.items" history-save-page></cart-badge>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader bar-clear" style="height: 130px;">
+    <div ng-show="criteria.criteria.molfile" ng-click="handleDisplayFiltersWithEditor()">
+      <chemwriter-filter query="criteria.criteria"></chemwriter-filter>
+    </div>
+
+    <div ng-hide="criteria.criteria.molfile" ng-click="handleDisplayFilters()">
+      <div class="criteria-wrapper">
+        <div class="icon"><i class="icon-search"></i></div>
+        <div class="query">{{ criteria.criteria.query }}</div>
+      </div>
+    </div>
+
+    <ng-pluralize ng-hide="model.isLoading"
+                  class="text-product-count"
+                  count="model.products.totalCount"
+                  when="{'0': 'No Results Found',
+                         '1': '1 Result Found',
+                         'other': '{{model.products.totalCount | thousands}} Results Found'}">
+    </ng-pluralize>
+
+    <br>
+  </ion-header-bar>
+
+  <ion-content class="padding content-products" position-bars-and-content>
+    <product-card ng-repeat="product in model.products.groups" product=product></product-card>
+
+    <ion-infinite-scroll
+      ng-if="model.canLoadMoreResults"
+      on-infinite="handlePerformSearch()"
+    >
+
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

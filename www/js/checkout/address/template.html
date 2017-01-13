@@ -1,0 +1,51 @@
+<ion-view view-title="Select Address" class="page-results">
+
+  <ion-nav-buttons side="left">
+    <history-back-button></history-back-button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader bar-clear" style="height: 70px;">
+    <div style="background: #fff; height: 50px; margin: -5px;"></div>
+  </ion-header-bar>
+
+  <ion-content position-bars-and-content>
+    <ion-list>
+      <ion-item class="item-complex">
+        <div class="item-content">
+          <div class="item-text-table">
+            <span class="item-text-label">Expected Delivery</span>
+            <span class="item-text-value">
+              <ionic-datepicker input-obj="datepickerData">
+                {{model.expectedDeliveryDate | date:datepickerData.dateFormat}}
+              </ionic-datepicker>
+            </span>
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item class="item-divider action-right">
+        Shipping Information
+        <a href="#" ui-sref="app.checkout.address-add">Add Address <i class="icon icon-right-open-big"></i></a>
+      </ion-item>
+      <ion-item ui-sref="app.checkout.address-select({ selectionId: 'shipping' })"
+                class="item-icon-right">
+
+        <div class="item-text-table">
+          <span class="item-text-label">Shipping Address</span>
+          <span class="item-text-value"></span>
+        </div>
+        <i class="icon ion-chevron-right"></i>
+      </ion-item>
+      <ion-item ui-sref="app.checkout.address-select({ selectionId: 'billing' })"
+                class="item-icon-right">
+
+        <div class="item-text-table">
+          <span class="item-text-label">Billing Address</span>
+          <span class="item-text-value">{{ model.selectedBillAddr }}</span>
+        </div>
+        <i class="icon ion-chevron-right"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

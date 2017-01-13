@@ -1,0 +1,30 @@
+{
+  "01": "1% 10, Net 30",
+  "02": "2% 10, Net 30",
+  "03": "Cash in Advance",
+  "04": "Cash on Delivery",
+  "05": "Due Upon Receipt",
+  "06": "Due End of Month",
+  "07": "Net 15",
+  "08": "Net 30 Days",
+  "09": "Net 45 Days",
+  "10": "Net 60 Days",
+  "99": "IDT-Inter Div Transfer",
+  "long": {
+    "01": "Payment due 30 days after invoice date, unless otherwise stated and mutually agreed upon by both parties. Orders are invoiced on the day of shipping. LabNetwork retains the right to suspend shipment for past due accounts and interest charges may be applied per specific contractual terms. Large orders and/or custom orders may require a down payment with purchase order.",
+    "02": "Payment due 30 days after invoice date, unless otherwise stated and mutually agreed upon by both parties. Orders are invoiced on the day of shipping. LabNetwork retains the right to suspend shipment for past due accounts and interest charges may be applied per specific contractual terms. Large orders and/or custom orders may require a down payment with purchase order.",
+    "03": "Payment due prior to shipment. Customer Service will contact the buyer and/or designated representatives to facilitate payment.",
+    "04": "Cash on Delivery",
+    "05": "Due Upon Receipt",
+    "06": "Due End of Month",
+    "07": "Payment due 15 days after invoice date, unless otherwise stated and mutually agreed upon by both parties. Orders are invoiced on the day of shipping. LabNetwork retains the right to suspend shipment for past due accounts and interest charges may be applied per specific contractual terms. Large orders and/or custom orders may require a down payment with purchase order.",
+    "08": "Payment due 30 days after invoice date, unless otherwise stated and mutually agreed upon by both parties. Orders are invoiced on the day of shipping. LabNetwork retains the right to suspend shipment for past due accounts and interest charges may be applied per specific contractual terms. Large orders and/or custom orders may require a down payment with purchase order.",
+    "09": "Payment due 45 days after invoice date, unless otherwise stated and mutually agreed upon by both parties. Orders are invoiced on the day of shipping. LabNetwork retains the right to suspend shipment for past due accounts and interest charges may be applied per specific contractual terms. Large orders and/or custom orders may require a down payment with purchase order.",
+    "10": "Payment due 60 days after invoice date, unless otherwise stated and mutually agreed upon by both parties. Orders are invoiced on the day of shipping. LabNetwork retains the right to suspend shipment for past due accounts and interest charges may be applied per specific contractual terms. Large orders and/or custom orders may require a down payment with purchase order.",
+    "99": "IDT-Inter Div Transfer",
+    "pending": "New customers are required to make a payment prior to shipment, unless otherwise stated and mutually agreed upon by both parties. Customer Service will contact the buyer and/or designated representatives to facilitate payment and discuss terms for future orders."
+  },
+  "footer": "For additional information, please <a href='javascript:void(0);' ng-click='contactus()'>contact Customer Service</a>.",
+  "pending": "New Customer Payment Terms",
+  "title": "Payment Terms"
+}

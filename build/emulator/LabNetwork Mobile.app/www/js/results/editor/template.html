@@ -1,0 +1,36 @@
+<ion-modal-view class="modal-search-structure">
+
+  <ion-header-bar>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="handleCancelEditor()">Cancel</button>
+    </div>
+    <h1 class="title">Edit Structure</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="handleSubmitEditor()">Submit</button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content>
+    <tab-slide-box tab="0" class="product-details">
+      <div class="tsb-icons">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a href="javascript:void(0);">Editor</a>
+            <a href="javascript:void(0);">Settings</a>
+          </ion-scroll>
+        </div>
+      </div>
+
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+          <structure-editor query="structureModel.cache"></structure-editor>
+        </ion-slide>
+
+        <ion-slide>
+          <structure-form query="structureModel.cache"></structure-form>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+  </ion-content>
+
+</ion-modal-view>

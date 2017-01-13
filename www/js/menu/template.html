@@ -1,0 +1,44 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-positive app-titlebar">
+      <ion-nav-back-button></ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <ion-nav-view name="content"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" width="300" class="page-menu">
+    <ion-header-bar>
+      <div class="buttons">
+        <button class="button button-clear" ui-sref="app.home" menu-close><i class="icon-search"></i></button>
+      </div>
+      <h1 class="title"><img src="img/menu/logo.png"></h1>
+    </ion-header-bar>
+
+    <ion-content scroll="false">
+      <ion-list>
+        <menu-item ui-sref="app.home">Home</menu-item>
+        <menu-item ng-if="session.isLoggedIn" ui-sref="app.orders.index">Orders</menu-item>
+        <ion-item country-selector>Country (<selected-country></selected-country>)</ion-item>
+        <menu-item ng-if="session.isLoggedIn" ng-click="handleLogout()">Logout</menu-item>
+      </ion-list>
+
+      <login-card>Returning users, please sign in here:</login-card>
+    </ion-content>
+
+    <ion-footer-bar ng-show="session.isLoggedIn">
+      <div class="row">
+        <div class="col-50">
+          <a ui-sref="app.cart.items" history-save-page menu-close><i class="icon-cart"></i></a>
+          <cart-badge ui-sref="app.cart.items" history-save-page menu-close></cart-badge>
+        </div>
+        <div class="col-50">
+          <div class="app-info">&nbsp;</div>
+        </div>
+      </div>
+    </ion-footer-bar>
+  </ion-side-menu>
+</ion-side-menus>

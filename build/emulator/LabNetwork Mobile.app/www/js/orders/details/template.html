@@ -1,0 +1,43 @@
+<ion-view view-title="Order Details">
+
+  <ion-nav-buttons side="left">
+    <!-- Force Ionic to impose back button on tab history stack -->
+  </ion-nav-buttons>
+
+  <ion-tabs class="tabs-background-positive tabs-color-light">
+    <ion-tab title="Addresses">
+      <ion-view>
+        <ion-header-bar class="bar-subheader bar-clear" style="height: 210px;">
+          <order-costs title="Total"
+                       items="model.order.costs.totalItemCost"
+                       shipping="model.order.costs.shippingCost"
+                       taxes="model.order.costs.tax"
+                       country="model.order.shipToAddress.country.isoCode2"
+                       currency-code="model.order.currencyCode"></order-costs>
+        </ion-header-bar>
+
+        <ion-content position-bars-and-content>
+          <order-addresses order="model.order"></order-addresses>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+
+    <ion-tab title="Products">
+      <ion-view>
+        <ion-header-bar class="bar-subheader bar-clear" style="height: 210px;">
+          <order-costs title="Total"
+                       items="model.order.costs.totalItemCost"
+                       shipping="model.order.costs.shippingCost"
+                       taxes="model.order.costs.tax"
+                       country="model.order.shipToAddress.country.isoCode2"
+                       currency-code="model.order.currencyCode"></order-costs>
+        </ion-header-bar>
+
+        <ion-content position-bars-and-content>
+          <order-products order="model.order"></order-products>
+        </ion-content>
+      </ion-view>
+    </ion-tab>
+  </ion-tabs>
+
+</ion-view>

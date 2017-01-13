@@ -1,0 +1,11 @@
+{
+  "fulfillmentStatus": {
+    "SHIPPED": "Shipped",
+    "SHIPPING": "Shipping",
+    "PROCESSING": "Processing",
+    "PENDING_APPROVAL": "Pending Approval",
+    "REJECTED": "Rejected",
+    "CANCELLED": "Cancelled",
+    "DELIVERED": "Delivered"
+  }
+}

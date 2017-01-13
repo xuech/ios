@@ -1,0 +1,18 @@
+<div class="component-cart-details">
+
+  <p class="text-subtotal">
+    Subtotal
+    <span class="text-quantity">
+      (<ng-pluralize count="items.length"
+                     when="{'0': '0 Items',
+                            '1': '1 Item',
+                            'other': '{} Items'}"></ng-pluralize>)
+    </span>
+  </p>
+
+  <p class="text-price">
+    <span ng-show=model.isLoading><ion-spinner icon="dots"></ion-spinner></span>
+    <span ng-hide=model.isLoading>{{ model.total | currency : model.currencyCode }}</span>
+  </p>
+
+</div>

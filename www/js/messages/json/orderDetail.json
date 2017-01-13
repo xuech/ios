@@ -1,0 +1,15 @@
+{
+  "day": "Business Day",
+  "days": "Business Days",
+  "order": {
+    "onBehalfOf": {
+      "message": "This order was placed by {{order.internalRepName}}, Customer Service Representative for LabNetwork, on behalf of the customer. <br>This order was received by",
+      "source": {
+        "EMAIL": "email.",
+        "FAX":   "fax.",
+        "OTHER": "an undefined source.",
+        "PHONE": "phone."
+      }
+    }
+  }
+}

@@ -1,0 +1,187 @@
+<ion-list>
+
+  <ion-item class="item-divider no-margin">
+    {{ order.supplierName }} Order
+  </ion-item>
+
+  <ion-item class="no-overflow item-alert-warn" ng-show="order.isOrderOBO">
+    <span message-output="orderDetail.order.onBehalfOf.message"></span>
+    <span message-output="orderDetail.order.onBehalfOf.source" key="order.channel"></span>
+  </ion-item>
+
+  <item-drawer ng-repeat="product in order.orderItems">
+    <ion-item class="item-divider item-selectable as-clickable no-margin">
+      {{ product.productDescription }}
+    </ion-item>
+
+    <ion-item>
+      <table>
+        <tbody>
+          <tr>
+            <th>Product Id</th>
+            <td>{{ product.internalItemNumber }}</td>
+          </tr>
+          <tr>
+            <th>Supplier</th>
+            <td>{{ product.supplierName }}</td>
+          </tr>
+          <tr>
+            <th>Size</th>
+            <td>{{ product.packageSizeDisplay }}</td>
+          </tr>
+          <tr>
+            <th>Quantity</th>
+            <td>{{ product.quantity }}</td>
+          </tr>
+          <tr>
+            <th>Unit Price</th>
+            <td>{{ product.unitPrice | currency : product.currencyCode }}</td>
+          </tr>
+          <tr>
+            <th>Total Price</th>
+            <td>{{ product.totalPrice | currency : product.currencyCode}}</td>
+          </tr>
+          <tr ng-show="permissions.isSiteAdmin || permissions.isCSR">
+            <th>Unit Cost</th>
+            <td>{{ product.unitCost | currency : product.currencyCode}}</td>
+          </tr>
+          <tr>
+            <th>Lead Time</th>
+            <td>
+              <item-inventory product="product"
+                              product-id="product.productId"
+                              product-package="product.packageId"
+                              inventories="product.inventory"
+                              ship-time="true"></item-inventory>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-item>
+  </item-drawer>
+
+
+  <!--
+    Payment Info
+  -->
+  <item-drawer is-collapsed="false">
+    <ion-item class="item-divider item-selectable">
+      Payment Information
+    </ion-item>
+
+    <ion-item class="drawer-content">
+      <div class="terms align-left no-wrap">
+        <div class="term credit" ng-show="order.creditCardPayment">
+          <div class="define">Payment Type</div>
+          <div class="describe">{{ order.paymentInfo.cardType }} - {{ order.paymentInfo.cardMask }}</div>
+        </div>
+
+        <div class="term" ng-hide="order.creditCardPayment">
+          <div class="define">Terms</div>
+          <div class="describe" payment-terms="order.paymentTerms" new-company-order="order.newCompanyOrder"></div>
+        </div>
+
+        <div class="term payment-collection">
+          <div class="define">Collected By</div>
+          <div class="describe">
+            <span ng-hide="order.chinaToChinaOrder">{{order.supplierName}}</span>
+            <span ng-show="order.chinaToChinaOrder">WuXi AppTec Tianjin</span>
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </item-drawer>
+
+  <!--
+    Shipping Info
+  -->
+  <item-drawer is-collapsed="false">
+    <ion-item class="item-divider item-selectable no-margin">
+      Shipping Information
+    </ion-item>
+
+    <ion-item class="drawer-content">
+      <div class="terms align-left no-wrap">
+        <div class="term">
+          <div class="define">Shipping Options</div>
+          <div class="describe">Standard Shipping</div>
+        </div>
+
+        <div class="term" ng-show="order.shippingAccountNumber || order.carrier">
+          <div class="define">Shipping Account</div>
+          <div class="describe">{{order.carrier}}  <em ng-show="order.shippingAccountNumber">{{order.shippingAccountNumber}}</em></div>
+        </div>
+      </div>
+    </ion-item>
+  </item-drawer>
+
+  <!--
+    Additional Info
+  -->
+  <item-drawer is-collapsed="false">
+    <ion-item class="item-divider item-selectable no-margin">
+      Additional Information
+    </ion-item>
+
+    <ion-item class="drawer-content">
+      <div class="terms no-wrap">
+        <div class="term">
+          <div class="define">Expected Delivery</div>
+          <div class="describe">{{ order.expectedDateDateOnly | hasValue }}</div>
+        </div>
+
+        <div class="term">
+          <div class="define">Purchase Order #</div>
+          <div class="describe">{{ order.customerPO | hasValue }}</div>
+        </div>
+
+        <div class="term">
+          <div class="define">Special Requests</div>
+          <div class="describe">{{ order.specialRequests | hasValue }}</div>
+        </div>
+      </div>
+    </ion-item>
+  </item-drawer>
+
+
+  <!--
+    Shipping Details
+  -->
+  <ion-item ng-if="hasShipments" class="item-divider">
+    Shipping Details
+  </ion-item>
+
+  <item-drawer ng-if="hasShipments" ng-repeat="shipment in order.shipments">
+    <ion-item class="item-divider item-selectable as-clickable no-margin">
+      {{ shipment.trackingNumber }}
+    </ion-item>
+
+    <ion-item>
+      <table>
+        <tbody>
+          <tr>
+            <th>Shipment Status</th>
+            <td>{{ shipment.status | hasValue }}</td>
+          </tr>
+          <tr>
+            <th>Shipped By</th>
+            <td>{{ shipment.shippedByCompany.name | hasValue }}</td>
+          </tr>
+          <tr>
+            <th>Carrier</th>
+            <td>{{ shipment.carrier | hasValue }}</td>
+          </tr>
+          <tr>
+            <th>Estimated Delivery</th>
+            <td>{{ shipment.estimatedDelivery | date:'M/d/yyyy' | hasValue }}</td>
+          </tr>
+          <tr>
+            <th>Actual Delivery</th>
+            <td>{{ shipment.actualDelivery | date:'M/d/yyyy' | hasValue }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </ion-item>
+  </item-drawer>
+
+</ion-list>

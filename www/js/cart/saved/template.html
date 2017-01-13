@@ -1,0 +1,27 @@
+<ion-view view-title="Saved Items">
+  <ion-nav-buttons side="left">
+    <history-back-button></history-back-button>
+  </ion-nav-buttons>
+
+  <div ng-show=model.isLoading>
+    <i class="icon ion-ios-loop loading"></i>
+  </div>
+
+  <ion-header-bar class="bar-subheader bar-clear" style="height: 130px;">
+    <cart-saved-details items=model.items.saved ng-class="{ fade: model.isLoading }"></cart-saved-details>
+  </ion-header-bar>
+
+  <ion-content position-bars-and-content>
+    <ion-list can-swipe="true" ng-hide=model.isLoading>
+      <ion-item item=item ng-href="#" ng-repeat="item in model.items.saved">
+        <cart-item item=item remove-item-delegate="handleRemoveItem"></cart-item>
+
+        <ion-option-button history-save-page="app.cart.items" ui-sref="app.results.details({ id: item.productId })" class="button-positive action-view">View<br>Item</ion-option-button>
+        <ion-option-button ng-hide="item.isInactiveProduct" ng-click="handleAddItem(item)" class="button-positive action-cart">Add<br>To<br>Cart</ion-option-button>
+        <ion-option-button ng-click="handleRemoveItem(item)" class="button-assertive action-remove">
+          <i class="icon ion-android-close"></i>
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,11 @@
+<ion-popover-view class="fit">
+  <ion-content>
+    <div class="list">
+      <div ng-repeat="location in model.inventoryDetails" ng-show="location.inStock">
+        <span ng-show="location.quantityAvailable > 0">{{ location.quantityAvailable }}{{ location.unitType }}</span>
+        <span ng-show="location.quantityAvailable <= 0 || !location.quantityAvailable" message-output="search.inStock"></span>
+        <span ng-show="location.location">- {{ location.location }}</span>
+      </div>
+    </div>
+  </ion-content>
+</ion-popover-view>

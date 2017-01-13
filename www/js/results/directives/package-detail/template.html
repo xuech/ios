@@ -1,0 +1,38 @@
+<article class="component-package-detail">
+
+  <h2>{{ package.description }}</h2>
+
+  <section class="properties">
+    <table>
+      <tr>
+        <td>Supplier:</td>
+        <td>{{ package.supplier }}</td>
+      </tr>
+      <tr>
+        <td>Purity:</td>
+        <td>{{ package.purity | hasValue}} <span ng-show="package.purity">%</span></td>
+      </tr>
+      <tr>
+        <td>Stock:</td>
+        <td>
+          <item-inventory product="product"
+                          inventories="package.inventory"></item-inventory>
+        </td>
+      </tr>
+    </table>
+    <table>
+      <tr>
+        <td>Starting Price:</td>
+        <td>
+          <span class="pricing">
+            {{ package.price | currency:package.currencyCode}}
+          </span>
+          <span class="sizing">
+            ({{ package.startingSize }})
+          </span>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+</article>

@@ -1,0 +1,26 @@
+<div class="component-order-costs">
+
+  <div class="cost-summary">
+    <h2>{{ title }}</h2>
+    <p>{{ totalCost | currency:currencyCode }}</p>
+
+    <div class="terms cost-summary">
+      <div class="term">
+        <div class="define">Items</div>
+        <div class="describe">{{ items | currency:currencyCode }}</div>
+      </div>
+      <div class="term">
+        <div class="define">Shipping</div>
+        <div class="describe">{{ shipping | currency:currencyCode }}</div>
+      </div>
+      <div class="term">
+        <div class="define">Taxes</div>
+        <div class="describe">
+          <span ng-show="isTaxIncluded">Included</span>
+          <span ng-hide="isTaxIncluded">{{ taxes | currency:currencyCode }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

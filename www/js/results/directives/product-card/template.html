@@ -1,0 +1,45 @@
+<div class="card component-product-card">
+  <div class="item item-divider" ng-click="handleToggleIsCollapsed()">
+    {{product.groupTitle}}
+
+    <a class="item-icon-right">
+      <collapsible-icon is-collapsed="isCollapsed"></collapsible-icon>
+    </a>
+  </div>
+
+  <div class="item item-text-wrap" ng-click="handleToggleIsCollapsed()">
+    <div class="properties">
+      <table>
+        <tr>
+          <td>CAS:</td>
+          <td>{{ product.cas }}</td>
+        </tr>
+        <tr>
+          <td>MDL:</td>
+          <td>{{ product.mdl }}</td>
+        </tr>
+      </table>
+
+      <p class="text-result-counter">
+        <ng-pluralize count="product.totalInGroup"
+                      when="{'1': '1 Result',
+                             'other': '{} Results'}"></ng-pluralize>
+      </p>
+    </div>
+
+    <div class="image">
+      <chemical-image id=product.chemId chemical=product></chemical-image>
+    </div>
+  </div>
+
+  <div ng-hide="isCollapsed" class="item item-divider">
+    <ion-list>
+      <ion-item ng-repeat="package in product.products"
+                ui-sref="app.results.details({ id: package.id })"
+                class="item-icon-right">
+        <package-detail package="package" product="product"></package-detail>
+        <i class="icon icon-right-open-mini"></i>
+      </ion-item>
+    </ion-list>
+  </div>
+</div>

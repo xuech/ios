@@ -1,0 +1,15 @@
+<ion-view view-title="Orders List">
+
+  <ion-content>
+    <order-card ng-repeat="order in model.orders.list"
+                ui-sref="app.orders.details({ id: order.orderId })"
+                order="order">
+    </order-card>
+
+    <ion-infinite-scroll
+      ng-if="model.canLoadMoreResults"
+      on-infinite="handleLoadOrders()">
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,11 @@
+<div class="component-search-structure">
+
+  <h1>Structure Search</h1>
+  <p>Use LabNetwork&#39;s molecular structure drawing tool to search our extensive chemical catalog by exact, similar or substructure matches.</p>
+
+  <form ng-submit="handleSubmitQuery()">
+    <chemwriter-filter query="model.query" ng-click="handleOpenEditor()"></chemwriter-filter>
+    <button type="submit" class="button button-positive">Search</button>
+  </form>
+
+</div>

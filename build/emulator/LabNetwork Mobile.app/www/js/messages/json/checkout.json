@@ -1,0 +1,11 @@
+{
+  "payment": {
+    "card": {
+      "001": "Visa",
+      "002": "MasterCard",
+      "003": "American Express",
+      "004": "Discover",
+      "005": "Diners Club"
+    }
+  }
+}

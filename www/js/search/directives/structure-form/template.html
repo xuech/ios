@@ -1,0 +1,19 @@
+<ion-list class="component-structure-form">
+
+  <label class="item item-input item-select item-type">
+    <div class="input-label">
+      Search Type
+    </div>
+    <select ng-model="query.structureSearchType">
+      <option value="EXACT">Exact</option>
+      <option value="SIMILAR">Similar</option>
+      <option value="SUBSTRUCTURE">Substructure</option>
+    </select>
+  </label>
+
+  <label class="item item-input item-similarity" ng-show="query.structureSearchType == 'SIMILAR'">
+    <span class="input-label">Similarity Threshold %</span>
+    <input type="number" ng-model="query.similarityThreshold">
+  </label>
+
+</ion-list>

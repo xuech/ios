@@ -1,0 +1,112 @@
+<ion-view view-title="Filters">
+  <ion-nav-buttons side="left">
+    <button class="button button-clear" ui-sref="app.home">
+      <i class="icon ion-ios-arrow-back"></i>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-clear button-label" ng-click="handlePerformSearch()" ng-disabled="isLoading">
+      <span ng-hide="isLoading">Search</span>
+      <span ng-show="isLoading"><ion-spinner icon="ios-small"></ion-spinner></span>
+    </button>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar-subheader bar-clear" style="height: 130px;">
+    <div ng-show="cache.molfile" ng-click="handleOpenEditor()">
+      <chemwriter-filter query="cache"></chemwriter-filter>
+    </div>
+
+    <form ng-hide="cache.molfile" ng-submit="handlePerformSearch()">
+      <keyword-form query="cache"></keyword-form>
+
+      <!-- this is dumb... angular requires `ng-submit` to have an accompanying submit button; hide it -->
+      <input type="submit" value="submit" style="visibility: hidden;" />
+    </form>
+
+    <br>
+  </ion-header-bar>
+
+  <ion-content class="content-filters" position-bars-and-content>
+    <form ng-submit="handlePerformSearch()">
+      <ion-list>
+        <ion-item class="item-divider">
+          Filter Selections
+        </ion-item>
+        <ion-item ng-repeat="field in model.filters.selections"
+                  item-is-loading="model.isLoading"
+                  ui-sref="app.results.selections({ selectionId: field.id })"
+                  class="item-icon-right">
+
+          <span class="item-text-label">{{ field.label }}</span>
+          {{ field | isSelected }}
+          <i class="icon ion-chevron-right"></i>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          Stock/Inventory
+        </ion-item>
+        <ion-item class="item-input">
+          <div class="input-inline">
+            <span class="input-label">QTY</span>
+            <input type="number" sanitize-number ng-model="model.filters.packagingUnits.unitStock">
+          </div>
+          <div class="input-inline item-select">
+            <span class="input-label">Unit</span>
+            <select class="form-control" ng-model="model.filters.packagingUnits.selectedUnit"
+                                         ng-options='unit for unit in model.filters.packagingUnits.values'>
+            </select>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          Purity Level
+        </ion-item>
+        <ion-item class="item-input">
+          <div class="input-inline">
+            <span class="input-label">Low</span>
+            <input type="number" sanitize-number ng-model="model.filters.purity.purityLow">
+                                 <!--
+                                 ng-min="model.filters.purity.defaultLowValue"
+                                 ng-max="model.filters.purity.purityHigh || model.filters.purity.defaultHighValue"
+                                 -->
+          </div>
+          <div class="input-inline">
+            <span class="input-label">High</span>
+            <input type="number" sanitize-number ng-model="model.filters.purity.purityHigh">
+                                 <!--
+                                 ng-min="model.filters.purity.purityLow || model.filters.purity.defaultLowValue"
+                                 ng-max="model.filters.purity.defaultHighValue"
+                                 -->
+          </div>
+        </ion-item>
+
+        <ion-item class="item-divider">
+          Molecular Weight
+        </ion-item>
+        <ion-item class="item-input">
+          <div class="input-inline">
+            <span class="input-label">Low</span>
+            <input type="number" sanitize-number ng-model="model.filters.molecular.molecularWeightLow">
+                                 <!--
+                                 ng-min="model.filters.molecular.defaultLowValue"
+                                 ng-max="model.filters.molecular.molecularWeightHigh || model.filters.molecular.defaultHighValue">
+                                 -->
+          </div>
+          <div class="input-inline">
+            <span class="input-label">High</span>
+            <input type="number" sanitize-number ng-model="model.filters.molecular.molecularWeightHigh">
+                                 <!--
+                                 ng-min="model.filters.molecular.molecularWeightLow || model.filters.molecular.defaultLowValue"
+                                 ng-max="model.filters.molecular.defaultHighValue">
+                                 -->
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <!-- this is dumb... angular requires `ng-submit` to have an accompanying submit button; hide it -->
+      <input type="submit" value="submit" style="visibility: hidden;" />
+    </form>
+  </ion-content>
+
+</ion-view>

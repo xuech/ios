@@ -1,0 +1,9 @@
+{
+  "backordered": "Back Ordered",
+  "inquire": "Inquire",
+  "stock": {
+    "sku": {
+      "ea": "Unit(s)"
+    }
+  }
+}

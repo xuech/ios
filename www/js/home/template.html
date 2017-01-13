@@ -1,0 +1,45 @@
+<ion-view view-title="" class="page-home">
+
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+  </ion-nav-buttons>
+
+  <ion-nav-bar class="bar-clear">
+    <ion-nav-buttons side="left">
+      <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear" ui-sref="app.cart.items" history-save-page><i class="icon-cart"></i></button>
+      <cart-badge ui-sref="app.cart.items" history-save-page></cart-badge>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-header-bar class="bar-subheader bar-clear" style="height: 105px;">
+    <div class="ui-logo">
+      <img src="img/home/logo.png">
+    </div>
+  </ion-header-bar>
+
+  <ion-tabs class="tabs-background-positive tabs-color-light">
+    <ion-tab title="Keyword">
+      <ion-nav-view>
+        <ion-content class="padding" position-bars-and-content animation="1000" ui-shadow ui-shade>
+          <div class="container">
+            <search-keyword></search-keyword>
+          </div>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Structure">
+      <ion-nav-view>
+        <ion-content class="padding" position-bars-and-content ui-shadow ui-shade>
+          <div class="container">
+            <search-structure></search-structure>
+          </div>
+        </ion-content>
+      </ion-nav-view>
+    </ion-tab>
+  </ion-tabs>
+
+</ion-view>

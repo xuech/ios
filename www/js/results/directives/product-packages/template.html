@@ -1,0 +1,97 @@
+<div class="available-packages component-available-packages">
+
+  <div class="alert-success" ng-class="{ 'is-visible': isConfirmationVisible }">
+    <div class="alert-contents">
+      <ng-pluralize count="confirmationProductData.length"
+                    when="{'1': 'Product has been added to cart!',
+                           'other': 'Products have been added to cart!'}"></ng-pluralize>
+    </div>
+  </div>
+
+  <div class="slide-content">
+    <header class="available-packages-title">
+      <h3>Available Packages</h3>
+      <p class="total-stock">
+        <span ng-show="model.package.isLoading"><ion-spinner icon="dots"></ion-spinner></span>
+        <span ng-hide="model.package.isLoading">
+          Total Stock:
+          <item-inventory product="product"
+                          product-id="product.id"
+                          product-package="model.package.id"
+                          inventories="model.package.productInventory"
+                          display-inventory-details="true"></item-inventory>
+        </span>
+      </p>
+    </header>
+
+    <form>
+      <section class="sizes">
+        <header><h4>Sizes</h4></header>
+        <div class="radio-boxes">
+          <label ng-repeat="package in model.packages" ng-click="handleShowPackage( package.id )">
+            <input type="radio" name="sizes" ng-checked="model.package.id == package.id">
+            <span class="text-label">{{ package.packagingSize }}{{ package.packagingUnit }}</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="package-id">
+        <table class="attributes">
+          <tr>
+            <th>Product ID:</th>
+            <td class="text-capitalize">{{ model.package.itemNumberWithSuffix }}</td>
+          </tr>
+        </table>
+      </section>
+
+      <section class="pricing-availability" ng-class="{'is-hidden': model.package.isLoading}">
+        <p>
+          <span class="price" ng-hide="model.package.isPriceUponRequest">
+            {{ model.package.price | currency : model.package.currencyCode }}
+          </span>
+          <span class="price" ng-show="model.package.isPriceUponRequest">
+            Price Upon Request
+          </span>
+        </p>
+        <p class="shipping">
+          Lead Time:
+          <item-inventory product="product"
+                          product-id="model.package.productId"
+                          product-package="model.package.id"
+                          inventories="model.package.productInventory"
+                          ship-time="true"></item-inventory>
+        </p>
+      </section>
+
+      <ion-list class="quantity">
+        <ion-item class="item-input">
+          <div class="input-inline">
+            <span class="input-label">Qty</span>
+            <span class="package-quantity">{{ model.package.quantity }}</span>
+          </div>
+          <div class="quantity-controls">
+            <i ng-click="handleQuantityDecrement()" class="icon ion-ios-minus-outline"></i>
+            <i ng-click="handleQuantityIncrement()" class="icon ion-ios-plus-outline"></i>
+          </div>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+
+  <ion-list class="total">
+    <ion-item>
+      <span class="label">Total</span>
+      <span class="value" ng-show="model.package.isLoading"><ion-spinner icon="dots"></ion-spinner></span>
+      <span class="value" ng-hide="model.package.isLoading">{{ model.total | currency : model.package.currencyCode }}</span>
+    </ion-item>
+    <ion-item class="buttons">
+      <!--<button class="button button-outline button-calm" ng-disabled=model.withoutQuantity>-->
+        <!--Get Quote-->
+      <!--</button>-->
+      <button class="button button-positive" ng-if="session.isLoggedIn" ng-click="handleAddToCart()" ng-disabled=model.withoutQuantity>
+        Add To Cart
+      </button>
+    </ion-item>
+  </ion-list>
+
+</div>

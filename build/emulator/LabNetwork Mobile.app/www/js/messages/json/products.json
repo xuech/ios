@@ -1,0 +1,11 @@
+{
+  "productGroups": {
+    "AMINO_ACIDS_PEPTIDES": "Amino Acids & Peptides",
+    "BUILDING_BLOCKS_TEMPLATES": "Building Blocks",
+    "FRAGMENT_COMPOUNDS": "Fragment Library Compounds",
+    "NATURAL": "Natural Products",
+    "REAGENT_SERVICES": "Reagents",
+    "SCREENING_COMPOUNDS": "Screening Library Compounds",
+    "TEMPLATES": "Templates/Scaffolds"
+  }
+}

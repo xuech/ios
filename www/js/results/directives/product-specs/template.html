@@ -1,0 +1,44 @@
+<div class="product-specifications">
+
+  <table class="table">
+    <tbody>
+      <tr ng-show="product.molecularWeight">
+        <th>Molecular Weight</th>
+        <td>{{ product.molecularWeight }}</td>
+      </tr>
+      <tr ng-show="product.rotBondCount">
+        <th>Rotable Bond Count</th>
+        <td>{{ product.rotBondCount }}</td>
+      </tr>
+      <tr ng-show="product.logP">
+        <th>Log P (Molecular Lipophilicity)</th>
+        <td>{{ product.logP }}</td>
+      </tr>
+      <tr ng-show="product.heavyAtomCount">
+        <th>Heavy Atom Count</th>
+        <td>{{ product.heavyAtomCount }}</td>
+      </tr>
+      <tr ng-show="product.chemical.inchi">
+        <th>InChI</th>
+        <td>{{ product.chemical.inchi }}</td>
+      </tr>
+      <tr ng-show="product.chemical.inchiKey">
+        <th>InChI Key</th>
+        <td>{{ product.chemical.inchiKey }}</td>
+      </tr>
+      <tr ng-show="product.chemical.smiles">
+        <th>SMILES</th>
+        <td>{{ product.chemical.smiles }}</td>
+      </tr>
+      <tr ng-show="product.chemical.iupacName">
+        <th>IUPAC Name</th>
+        <td>{{ product.chemical.iupacName }}</td>
+      </tr>
+      <tr ng-show="product.chemical.labNetworkId">
+        <th>LN Molecule ID</th>
+        <td>{{ product.chemical.labNetworkId }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

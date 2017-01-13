@@ -1,0 +1,83 @@
+<ion-list>
+  <ion-item class="item-divider product-attributes no-overflow">
+    <h1>Order #: {{ order.jdeOrderNumber }}</h1>
+
+    <table class="attributes">
+      <tr>
+        <th>Status:</th>
+        <td class="text-capitalize">{{ order.fulfillmentStatus }}</td>
+      </tr>
+    </table>
+  </ion-item>
+
+  <ion-item class="no-overflow item-alert-warn" ng-show="order.isOrderOBO">
+    <span message-output="orderDetail.order.onBehalfOf.message"></span>
+    <span message-output="orderDetail.order.onBehalfOf.source" key="order.channel"></span>
+  </ion-item>
+
+  <item-drawer is-collapsed="false">
+    <ion-item class="item-divider no-margin">
+      Ordered By
+    </ion-item>
+    <ion-item class="drawer-content">
+      {{order.companyName}}<br/>
+      {{order.placedBy.firstName}} {{order.placedBy.lastName}}<br/>
+      {{order.placedBy.phone}}<br/>
+      {{order.placedBy.email}}
+    </ion-item>
+  </item-drawer>
+
+  <item-drawer>
+    <ion-item class="item-divider no-margin">
+      Shipping Address
+    </ion-item>
+    <ion-item class="drawer-content">
+      <span class="billing-contact">{{order.shippingContactName}}</span> <br>
+				{{order.shipToAddress.street1}}
+
+				<span ng-show="order.shipToAddress.street2">
+					<br/>{{order.shipToAddress.street2}}
+				</span>
+
+				<span ng-show="order.shipToAddress.street3">
+					<br/>{{order.shipToAddress.street3}}
+				</span>
+
+				<span ng-show="order.shipToAddress.street4">
+					<br/>{{order.shipToAddress.street4}}
+				</span>
+
+				<br/>
+				{{order.shipToAddress.city}}, {{order.shipToAddress.state}} {{order.shipToAddress.postalCode}}
+				<br/>
+				{{order.shipToAddress.country.name}}
+    </ion-item>
+  </item-drawer>
+
+  <item-drawer>
+    <ion-item class="item-divider no-margin">
+      Billing Address
+    </ion-item>
+    <ion-item class="drawer-content">
+      <span class="shipping-contact">{{order.billingContactName}}</span> <br>
+				{{order.billToAddress.street1}}
+
+				<span ng-show="order.billToAddress.street2">
+					<br/>{{order.billToAddress.street2}}
+				</span>
+
+				<span ng-show="order.billToAddress.street3">
+					<br/>{{order.billToAddress.street3}}
+				</span>
+
+				<span ng-show="order.billToAddress.street4">
+					<br/>{{order.billToAddress.street4}}
+				</span>
+
+				<br/>
+				{{order.billToAddress.city}}, {{order.billToAddress.state}} {{order.billToAddress.postalCode}}
+				<br/>
+				{{order.billToAddress.country.name}}
+    </ion-item>
+  </item-drawer>
+</ion-list>

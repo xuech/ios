@@ -1,0 +1,136 @@
+<ion-view view-title="Add Address" class="state-address-add">
+
+  <ion-nav-bar class="bar-positive app-titlebar">
+    <ion-nav-back-button class="button-clear button-icon button-clear">Cancel</ion-nav-back-button>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear button-label" ng-click="handleSubmit()">Confirm</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+
+  <ion-content>
+    <ion-list>
+      <item-drawer is-collapsed="false" can-collapse="false">
+        <ion-item class="item-divider no-margin">
+          Type
+        </ion-item>
+        <ion-item class="drawer-content">
+          <div class="radio-boxes">
+            <label>
+              <input type="radio" name="addressType" value="BILL_ONLY">
+              <span class="text-label">Bill Only</span>
+            </label>
+            <label>
+              <input type="radio" name="addressType" value="SHIP_ONLY">
+              <span class="text-label">Ship Only</span>
+            </label>
+            <label>
+              <input type="radio" name="addressType" value="BOTH">
+              <span class="text-label">Both<small>Billing &amp; Shipping</small></span>
+            </label>
+          </div>
+        </ion-item>
+      </item-drawer>
+
+      <ion-item class="item-divider with-margin">
+        Details
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Address 1</span>
+          <input type="text">
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Address 2</span>
+          <input type="text">
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group item-select">
+        <div class="input-inline">
+          <span class="input-label">Country</span>
+          <select ng-model="query.type" ng-init="query.type='fineChems'">
+            <option value="fineChems">Fine Chemicals</option>
+            <option value="lifeScience">Anitbodies</option>
+            <option value="allProducts">All Products</option>
+          </select>
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">City</span>
+          <input type="text">
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group item-select">
+        <div class="input-inline">
+          <span class="input-label">State</span>
+          <select ng-model="query.type" ng-init="query.type='fineChems'">
+            <option value="fineChems">Fine Chemicals</option>
+            <option value="lifeScience">Anitbodies</option>
+            <option value="allProducts">All Products</option>
+          </select>
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Country</span>
+          <input type="text">
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Postal Code</span>
+          <input type="text">
+        </div>
+      </ion-item>
+
+      <ion-item class="item-divider with-margin">
+        Contact
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Billing Phone</span>
+          <input type="text">
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Billing Email</span>
+          <input type="text">
+        </div>
+      </ion-item>
+
+      <ion-item class="item-divider with-margin">
+        Additional Information
+      </ion-item>
+      <ion-item class="item-input item-group item-select">
+        <div class="input-inline">
+          <span class="input-label">Invoice Language</span>
+          <select ng-model="query.type" ng-init="query.type='fineChems'">
+            <option value="fineChems">Fine Chemicals</option>
+            <option value="lifeScience">Anitbodies</option>
+            <option value="allProducts">All Products</option>
+          </select>
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group item-select">
+        <div class="input-inline">
+          <span class="input-label">SDS Language</span>
+          <select ng-model="query.type" ng-init="query.type='fineChems'">
+            <option value="fineChems">Fine Chemicals</option>
+            <option value="lifeScience">Anitbodies</option>
+            <option value="allProducts">All Products</option>
+          </select>
+        </div>
+      </ion-item>
+      <ion-item class="item-input item-group">
+        <div class="input-inline">
+          <span class="input-label">Custom ID</span>
+          <input type="text">
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

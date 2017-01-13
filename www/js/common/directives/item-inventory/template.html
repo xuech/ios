@@ -1,0 +1,4 @@
+<span class="component-item-inventory">{{ model.inventory }}</span>
+<span ng-show="displayInventoryDetails && model.inStock && !model.shipTime && !model.noLocations">
+  <i ng-click="popover.show($event)" class="btn-inventory-information icon ion-ios-information-outline"></i>
+</span>

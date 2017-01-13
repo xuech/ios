@@ -1,0 +1,100 @@
+<ion-view view-title="Product" class="page-results" cache-view="false">
+
+  <ion-nav-buttons side="left">
+    <history-back-button></history-back-button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <ion-slide-box class="product-images">
+      <ion-slide>
+        <div class="card">
+          <div class="item item-image">
+            <chemical-image id=model.product.chemical.id chemical=model.product></chemical-image>
+          </div>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+
+    <ion-list>
+      <ion-item class="item-divider product-attributes no-overflow">
+        <h1>{{ model.product.description }}</h1>
+
+        <table class="attributes">
+          <tr>
+            <th>Supplier:</th>
+            <td class="text-capitalize">{{ model.product.supplier }}</td>
+          </tr>
+        </table>
+      </ion-item>
+
+      <item-drawer>
+        <ion-item class="item-divider no-margin">
+          Additional Details
+        </ion-item>
+
+        <ion-item>
+          <table>
+            <tr ng-show="model.product.chineseName">
+              <th>Chinese Name</th>
+              <td>{{ model.product.chineseName }}</td>
+            </tr>
+            <tr>
+              <th>CAS #</th>
+              <td>{{ model.product.cas | hasValue }}</td>
+            </tr>
+            <tr>
+              <th>MDL #</th>
+              <td>{{ model.product.mdl | hasValue }}</td>
+            </tr>
+            <tr>
+              <th>Chemical Formula</th>
+              <td>{{ model.product.chemicalFormula }}</td>
+            </tr>
+            <tr>
+              <th>Purity</th>
+              <td>{{ model.product.purity | hasValue }}</td>
+            </tr>
+            <tr ng-show="model.product.categories">
+              <th>Category</th>
+              <td>{{ model.product.categories }}</td>
+            </tr>
+          </table>
+        </ion-item>
+      </item-drawer>
+
+      <item-drawer ng-show="model.product.supplierLogoUrl">
+        <ion-item class="item-divider no-margin">
+          Supplier Information
+        </ion-item>
+
+        <ion-item>
+          <img ng-src="{{ model.product.supplierLogoUrl }}" class="supplier-logo" />
+        </ion-item>
+      </item-drawer>
+    </ion-list>
+
+    <tab-slide-box tab="0" class="product-details">
+      <div class="tsb-icons">
+        <div class="tsb-ic-wrp">
+          <ion-scroll direction="x" class="tsb-hscroll">
+            <a href="javascript:void(0);">Packages</a>
+            <a href="javascript:void(0);">Product Specifications</a>
+          </ion-scroll>
+        </div>
+      </div>
+
+      <ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+        <ion-slide>
+          <product-packages product="model.product"></product-packages>
+        </ion-slide>
+
+        <ion-slide>
+          <product-specs product="model.product"></product-specs>
+        </ion-slide>
+      </ion-slide-box>
+    </tab-slide-box>
+
+  </ion-content>
+
+</ion-view>
